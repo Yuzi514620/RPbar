@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import './App.css';
+import { getImage } from './assets'
+
+const images = import.meta.glob('./*.png', { eager: true })
+
 
 const galleryImages = [
   {
-    src: 'https://github.com/harry0621/-/blob/main/%E6%B0%B4%E5%B9%95.png?raw=true',
+    src: getImage('水幕.png'),
     alt: '昭和之夢',
     caption: '【昭和之夢】',
   },
   {
-    src: 'https://github.com/harry0621/-/blob/main/%E8%88%9E%E5%8F%B0%E5%90%A7%E6%AA%AF.png?raw=true',
+    src: getImage('舞台吧檯.png'),
     alt: '沉寂吧檯',
     caption: '【沉寂吧檯】',
   },
   {
-    src: 'https://github.com/harry0621/-/blob/main/%E5%BA%A7%E4%BD%8D.png?raw=true',
+    src: getImage('座位.png'),
     alt: '摩登角落',
     caption: '【摩登角落】',
   },
@@ -22,20 +26,20 @@ const galleryImages = [
 const staffList = [
   {
     name: '咪子',
-    img: 'https://github.com/harry0621/-/blob/main/%E5%92%AA%E5%AD%902.png?raw=true',
+    img: getImage('咪子2.png'),
     desc: '店主。期待與每一位旅客共譜深夜的樂章。',
     special: '【 此處填寫特殊服務內容 】',
   },
   {
     name: '鹹魚',
-    img: 'https://github.com/harry0621/-/blob/main/%E9%B9%B9%E9%AD%9A2.png?raw=true',
+    img: getImage('鹹魚2.png'),
     desc: '店員。以優雅的服務，帶您領略昭和氛圍的寧靜。',
     special: `拍立得服務:1張10000GIL
 深度輔導:微光的對話(獨立兩人空間) 30min 300000GIL`,
   },
   {
     name: '伊萊諾斯',
-    img: 'https://github.com/harry0621/-/blob/main/%E4%BC%8A%E8%90%8A.png?raw=true',
+    img: getImage('伊萊.png'),
     desc: '店員。日夜交替時，他卸下了白日的身分，成為了溫柔沉穩的傾聽者。願每位前來的客人都能留下美好的回憶。',
     special: `指定陪伴30min + 合照一張 + 開香檳 150,000 Gil
 一般拍立得 附簽名 10,000 Gil
@@ -45,19 +49,19 @@ const staffList = [
   },
   {
     name: '閻羅',
-    img: 'https://github.com/harry0621/-/blob/main/%E9%96%BB%E7%BE%85.png?raw=true',
+    img: getImage('閻羅.png'),
     desc: '帶上你的白日夢，給予你最極致的危險寵溺。',
     special: '【 此處填寫特殊服務內容 】',
   },
   {
     name: '羽神天音',
-    img: 'https://github.com/harry0621/-/blob/main/%E7%BE%BD%E7%A5%9E.png?raw=true',
+    img: getImage('羽神.png'),
     desc: '樂手。當琴弦撥動，為你洗去一天的疲憊，旋律會在心裡與你共鳴。',
     special: '【 此處填寫特殊服務內容 】',
   },
   {
     name: '小霖兒',
-    img: 'https://github.com/harry0621/-/blob/main/%E5%B0%8F%E9%9C%96%E5%85%92.png?raw=true',
+    img: getImage('小霖兒.png'),
     desc: '樂手。讓我為您演奏一首歌，閉上眼睛，把心交給我。這一刻，我希望您聽見幸福的顏色。',
     special: '【 此處填寫特殊服務內容 】',
   },
