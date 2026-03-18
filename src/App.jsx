@@ -1,79 +1,20 @@
 import { useState } from 'react';
 import './App.css';
 import { getImage } from './assets'
+import galleryImagesData from './data/galleryImages.json';
+import staffListData from './data/staffList.json';
 
-const images = import.meta.glob('./*.png', { eager: true })
 
+const galleryImages = galleryImagesData.map((image) => ({
+  src: getImage(image.file),
+  alt: image.alt,
+  caption: image.caption,
+}));
 
-const galleryImages = [
-  {
-    src: getImage('水幕.png'),
-    alt: '昭和之夢',
-    caption: '【昭和之夢】',
-  },
-  {
-    src: getImage('舞台吧檯.png'),
-    alt: '沉寂吧檯',
-    caption: '【沉寂吧檯】',
-  },
-  {
-    src: getImage('座位.png'),
-    alt: '摩登角落',
-    caption: '【摩登角落】',
-  },
-];
-
-const staffList = [
-  {
-    name: '咪子',
-    img: getImage('咪子2.png'),
-    desc: '店主。期待與每一位旅客共譜深夜的樂章。',
-    special: '溫泉♨️伴遊服務，價錢詢問咪子',
-  },
-  {
-    name: '鹹魚',
-    img: getImage('鹹魚2.png'),
-    desc: '店員。以優雅的服務，帶您領略昭和氛圍的寧靜。',
-    special: `合照服務:1張 - 30000 Gil
-深度輔導:特別諮詢輔導服務 30min - 300000 Gil
-溫泉伴遊 : 300000 Gil`,
-  },
-  {
-    name: '伊萊諾斯',
-    img: getImage('伊萊.png'),
-    desc: '店員。日夜交替時，他卸下了白日的身分，成為了溫柔沉穩的傾聽者。願每位前來的客人都能留下美好的回憶。',
-    special: `指定陪伴30min + 合照一張 + 開香檳 150,000 Gil
-一般拍立得 附簽名 10,000 Gil
-親密拍立得 附簽名 30,000 Gil
-拍立得加購簽繪 + 5,000 Gil
-伴遊服務 需討論議價`,
-  },
-  {
-    name: '閻羅',
-    img: getImage('閻羅.png'),
-    desc: '帶上你的白日夢，給予你最極致的危險寵溺。',
-    special: '【 此處填寫特殊服務內容 】',
-  },
-  {
-    name: '泉蓮',
-    img: getImage('泉蓮.png'),
-    desc: '在燈火與酒香之間，讓陪伴成為最溫暖的療癒。以溫柔的氣質，為夜晚添上一點從容的浪漫。',
-    special: `九宮幻卡對局10分鐘：30000Gil
-    伴遊服務 需議價`,
-  },
-  {
-    name: '羽神天音',
-    img: getImage('羽神.png'),
-    desc: '樂手。當琴弦撥動，為你洗去一天的疲憊，旋律會在心裡與你共鳴。',
-    special: '【 此處填寫特殊服務內容 】',
-  },
-  {
-    name: '小霖兒',
-    img: getImage('小霖兒.png'),
-    desc: '樂手。讓我為您演奏一首歌，閉上眼睛，把心交給我。這一刻，我希望您聽見幸福的顏色。',
-    special: '【 此處填寫特殊服務 】',
-  },
-];
+const staffList = staffListData.map((item) => ({
+  ...item,
+  img: getImage(item.file),
+}));
 
 function HomePage() {
   return (
@@ -133,7 +74,7 @@ function StaffPage() {
               <p className="staff-desc">{staff.desc}</p>
               <div className="staff-special">
                 <span className="special-title">個人特殊指名服務：</span>
-                <span className="special-content">{staff.special}</span>
+                <span className="special-content" style={{ whiteSpace: 'pre-line' }}>{staff.special}</span>
               </div>
             </div>
           </div>
