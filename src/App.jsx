@@ -34,8 +34,9 @@ const staffList = [
     name: '鹹魚',
     img: getImage('鹹魚2.png'),
     desc: '店員。以優雅的服務，帶您領略昭和氛圍的寧靜。',
-    special: `拍立得服務:1張10000GIL
-深度輔導:微光的對話(獨立兩人空間) 30min 300000GIL`,
+    special: `合照服務:1張 - 30000 Gil
+深度輔導:特別諮詢輔導服務 30min - 300000 Gil
+溫泉伴遊 : 300000 Gil`,
   },
   {
     name: '伊萊諾斯',
@@ -52,6 +53,13 @@ const staffList = [
     img: getImage('閻羅.png'),
     desc: '帶上你的白日夢，給予你最極致的危險寵溺。',
     special: '【 此處填寫特殊服務內容 】',
+  },
+  {
+    name: '泉蓮',
+    img: getImage('泉蓮.png'),
+    desc: '在燈火與酒香之間，讓陪伴成為最溫暖的療癒。以溫柔的氣質，為夜晚添上一點從容的浪漫。',
+    special: `九宮幻卡對局10分鐘：30000Gil
+    伴遊服務 需議價`,
   },
   {
     name: '羽神天音',
