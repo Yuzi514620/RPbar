@@ -71,7 +71,7 @@ const staffList = [
     name: '小霖兒',
     img: getImage('小霖兒.png'),
     desc: '樂手。讓我為您演奏一首歌，閉上眼睛，把心交給我。這一刻，我希望您聽見幸福的顏色。',
-    special: '【 此處填寫特殊服務內容 】',
+    special: '【 此處填寫特殊服務 】',
   },
 ];
 
