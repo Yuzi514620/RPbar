@@ -73,11 +73,9 @@ nav button:hover {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -386,4 +384,153 @@ footer {
   footer {
     padding: 50px 20px;
   }
+}
+
+/* 浮動視窗 */
+.staff-song-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid #c5a059;
+  background: transparent;
+  color: #c5a059;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.staff-song-btn:hover {
+  background: #c5a059;
+  color: #111;
+}
+
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dialog {
+  width: min(640px, 100%);
+  max-height: 80vh;
+  overflow-y: auto;
+  background: rgba(26, 22, 19, 0.95);
+  color: #e2dcd3;
+  border: 1px solid rgba(197, 160, 89, 0.5);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: rgba(10, 9, 8, 0.95);
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.dialog-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.dialog-content {
+  padding: 16px 20px;
+  border-top: 1px solid #334155;
+  border-bottom: 1px solid #334155;
+}
+
+.dialog-section {
+  margin-bottom: 16px;
+}
+
+.dialog-section-title {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.dialog-text {
+  color: #e2e8f0;
+  line-height: 1.8;
+}
+
+.dialog-actions {
+  padding: 12px 20px;
+  display: flex;
+  justify-content: flex-end;
+  background: #0f172a;
+}
+
+.dialog-action-btn {
+  padding: 8px 16px;
+  background: #c5a059;
+  color: #111;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dialog-action-btn:hover {
+  background: #f0c865;
+}
+
+.song-modal {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #1a1613;
+  color: #e2dcd3;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: 14px;
+  padding: 28px 22px 22px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.song-modal h3 {
+  margin: 0 0 18px;
+  color: #c5a059;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.song-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  color: #e2dcd3;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.song-item {
+  padding: 10px 14px;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  text-align: center;
 }

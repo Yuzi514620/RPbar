@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { getImage } from './assets'
 import galleryImagesData from './data/galleryImages.json';
@@ -57,9 +57,35 @@ function HomePage() {
 }
 
 function StaffPage() {
+  const [openSongs, setOpenSongs] = useState(false);
+  const [selectedStaff, setSelectedStaff] = useState(null);
+
+  const handleOpenSongs = (staff) => {
+    setSelectedStaff(staff);
+    setOpenSongs(true);
+  };
+
+  const handleCloseSongs = () => {
+    setOpenSongs(false);
+    setSelectedStaff(null);
+  };
+
+  useEffect(() => {
+    if (openSongs) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [openSongs]);
+
   return (
     <div className="page active">
       <h2>STAFF</h2>
+
       <div className="staff-list">
         {staffList.map((staff, index) => (
           <div
@@ -69,17 +95,72 @@ function StaffPage() {
             <div className="staff-img">
               <img src={staff.img} alt={staff.name} />
             </div>
+
             <div className="staff-info">
               <div className="staff-name">{staff.name}</div>
+
               <p className="staff-desc">{staff.desc}</p>
+
               <div className="staff-special">
                 <span className="special-title">個人特殊指名服務：</span>
-                <span className="special-content" style={{ whiteSpace: 'pre-line' }}>{staff.special}</span>
+                <span
+                  className="special-content"
+                  style={{ whiteSpace: 'pre-line' }}
+                >
+                  {staff.special}
+                </span>
+                {staff.link?.url && staff.link?.text && (
+                <a
+                  href={staff.link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="special-content"
+                >
+                  {staff.link.text}
+                </a>
+              )}
               </div>
+
+              
+
+              {staff.songs?.length > 0 && (
+                <button
+                  type="button"
+                  className="staff-song-btn"
+                  onClick={() => handleOpenSongs(staff)}
+                >
+                  可點歌曲
+                </button>
+              )}
             </div>
           </div>
         ))}
       </div>
+
+      {openSongs && selectedStaff && (
+        <div className="dialog-overlay" onClick={handleCloseSongs}>
+          <div className="dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="dialog-title">
+              <span>{selectedStaff.name} 可點歌曲</span>
+              <button
+                type="button"
+                className="dialog-close"
+                onClick={handleCloseSongs}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="dialog-content">
+              {selectedStaff.songs.map((song, index) => (
+                <div className="song-item" key={`${song}-${index}`}>
+                  {song}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
