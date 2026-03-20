@@ -55,6 +55,51 @@ function HomePage() {
     </div>
   );
 }
+function RulesPage() {
+  return (
+    <div className="page active">
+      <section className="content-section">
+        <div className="notice-box">
+          <h3>入店規範</h3>
+          <p>🌹 咪子小百合公關酒吧：顧客入店守則與服務須知 🌹</p>
+          <p>歡迎光臨。為了確保每位賓客都能在舒適、安全的氛圍中享受音樂與交流，並保障本店員工的工作環境，請在進入服務前詳閱以下規範：</p>
+
+          <h4>一、服務定位與內容</h4>
+          <ul>
+            <li>核心服務：本店定位為「純交流公關酒吧」，服務內容僅限於陪伴聊天、音樂演奏與紀念合照。</li>
+            <li>純粹交流：嚴禁任何涉及性暗示、色情話題或違反遊戲規範之「魔法性交易」服務。如經發現，本店將立即停止服務並請離現場。</li>
+          </ul>
+
+          <h4>二、攝影與肖像規範</h4>
+          <ul>
+            <li>禁止私自拍攝：為確保場內秩序與隱私，禁止顧客自行進行攝影/截圖。</li>
+            <li>官方拍攝服務：如有拍照需求，請洽詢服務人員。由本店員工操作拍攝能確保畫面品質，並方便場控人員管理。</li>
+            <li>禁止違規拍攝：本店嚴拒任何涉及 Mod 改圖、R18+ 內容或違反遊戲規章之「魔法拍攝」。嚴禁在店內直播錄影。</li>
+            <li>社群發布規則：於服務期間獲得之合照，若需發布至社群平台（如 FB、IG、X、DC 等），請務必標記當事者或「咪子小百合」，或事先徵得店員同意。嚴禁在未告知的情況下擅自發布。</li>
+          </ul>
+
+          <h4>三、互動邊界與隱私保護</h4>
+          <ul>
+            <li>尊重角色設定：本店員工以 Roleplay (RP) 身分進行服務，禁止打探員工之真實性別、性取向或任何現實生活資訊。</li>
+            <li>拒絕過當要求：請勿對員工提出令人不適的要求。店員有權隨時拒絕令其感到猶豫或不適的請求。</li>
+            <li>下班即私人：店員在營業時間外皆為一般玩家。嚴禁在營業時間外跟蹤、騷擾店員，或針對 RP 設定以外的個人隱私進行探查。</li>
+          </ul>
+
+          <h4>四、營業與交易流程</h4>
+          <ul>
+            <li>先付後籌：為確保服務流程順暢，請於服務開始前完成支付。</li>
+          </ul>
+
+          <h4>五、違規處理機制</h4>
+          <ul>
+            <li>黑名單制度：若顧客出現暗示、勸誘違法交易、騷擾或屢次違反上述規範之行為，本店將直接列入永久黑名單，並於 Discord 群組及相關管道進行通報。</li>
+          </ul>
+
+        </div>
+      </section>
+    </div>
+  );
+}
 
 function StaffPage() {
   const [openSongs, setOpenSongs] = useState(false);
@@ -223,6 +268,9 @@ export default function App() {
         <button type="button" onClick={() => handleShowPage('home')}>
           關於我們
         </button>
+        <button type="button" onClick={() => handleShowPage('rules')}>
+          入店規範
+        </button>
         <button type="button" onClick={() => handleShowPage('staff')}>
           店員介紹
         </button>
@@ -232,6 +280,7 @@ export default function App() {
       </nav>
 
       {page === 'home' && <HomePage />}
+      {page === 'rules' && <RulesPage />}
       {page === 'staff' && <StaffPage />}
       {page === 'menu' && <MenuPage />}
 
