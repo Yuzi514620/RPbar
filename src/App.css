@@ -122,8 +122,16 @@ h2 {
   margin: 50px 0;
   letter-spacing: 10px;
 }
+.special-link,
+.notice-box a {
+  color: var(--gold);
+  text-decoration: underline;
+}
 
-.content-section {
+.special-link:hover,
+.notice-box a:hover {
+  color: #ffcd75;
+}.content-section {
   max-width: 1000px;
   margin: auto;
   padding: 0 20px;

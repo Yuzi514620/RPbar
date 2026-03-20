@@ -41,6 +41,7 @@ function HomePage() {
           <p>4. 除每位店員可以指名聊天服務外，每位店員也有特殊指名服務，還請參考店員介紹。</p>
           <p>5. 本店不提供 ERP 服務，每位店員接受程度不同。請在雙方都能接受的程度暢談。</p>
           <p>6. 本店為五、六營業，表定營業時間 22:00~02:00。還請各位顧客注意當日是否有店員排班，以獲得最佳體驗。</p>
+          <p>7. 本店有 DC 群歡迎加入預約：<a className="special-link" href="https://discord.gg/zVfRK8s7vQ" target="_blank" rel="noopener noreferrer">與咪子有約 | Showa Modern Lounge</a></p>
         </div>
 
         <div className="gallery">
