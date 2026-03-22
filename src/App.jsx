@@ -175,7 +175,7 @@ function StaffPage() {
                   className="staff-song-btn"
                   onClick={() => handleOpenSongs(staff)}
                 >
-                  可點歌曲
+                  點歌簿
                 </button>
               )}
             </div>
@@ -187,7 +187,7 @@ function StaffPage() {
         <div className="dialog-overlay" onClick={handleCloseSongs}>
           <div className="dialog" onClick={(e) => e.stopPropagation()}>
             <div className="dialog-title">
-              <span>{selectedStaff.name} 可點歌曲</span>
+              <span>{selectedStaff.name} 點歌簿</span>
               <button
                 type="button"
                 className="dialog-close"
@@ -197,7 +197,7 @@ function StaffPage() {
               </button>
             </div>
 
-            <div className="dialog-content">
+            <div className="dialog-content" style={{ display: 'flex', gap: '9px', flexDirection: 'column' }}>
               {selectedStaff.songs.map((song, index) => (
                 <div className="song-item" key={`${song}-${index}`}>
                   {song}
