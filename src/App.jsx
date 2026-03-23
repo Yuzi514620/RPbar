@@ -3,6 +3,12 @@ import './App.css';
 import { getImage } from './assets'
 import galleryImagesData from './data/galleryImages.json';
 import staffListData from './data/staffList.json';
+import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import InfoIcon from '@mui/icons-material/Info';
+import RuleIcon from '@mui/icons-material/Gavel';
+import PeopleIcon from '@mui/icons-material/People';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 
 const galleryImages = galleryImagesData.map((image) => ({
@@ -220,22 +226,42 @@ function MenuPage() {
           <tbody>
             <tr>
               <td>
-                <b className="menu-title">昭和經典雞尾酒特調 / 店員特調軟飲</b>
-                <br />
-                <small className="menu-subtitle">伴隨微光的入座之禮</small>
-              </td>
-              <td className="price-val">
-                <i>酒水免費提供</i>
-              </td>
-            </tr>
-            <tr>
-              <td>
                 <b className="menu-title">指定陪伴服務 (15min)</b>
                 <br />
                 <small className="menu-subtitle">價格依每位店員而定</small>
               </td>
               <td className="price-val">
                 <i>50,000 Gil+</i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b className="menu-title">香檳</b>
+                <br />
+                <small className="menu-subtitle">讓美好的夜晚加上微醺的心跳聲吧</small>
+              </td>
+              <td className="price-val">
+                <i>單支 / 30,000 Gil+</i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b className="menu-title">香檳塔</b>
+                <br />
+                <small className="menu-subtitle">為今夜的公主喊出振奮的香檳CALL！</small>
+              </td>
+              <td className="price-val">
+                <i>100,000 Gil+</i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b className="menu-title">昭和經典雞尾酒特調 / 店員特調軟飲</b>
+                <br />
+                <small className="menu-subtitle">伴隨微光的入座之禮</small>
+              </td>
+              <td className="price-val">
+                <i>酒水免費提供</i>
               </td>
             </tr>
             <tr>
@@ -257,28 +283,78 @@ function MenuPage() {
 
 export default function App() {
   const [page, setPage] = useState('home');
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleShowPage = (pageId) => {
     setPage(pageId);
+    setDrawerOpen(false); // Close drawer after navigation
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const navItems = [
+    { id: 'home', label: '關於我們', icon: <InfoIcon /> },
+    { id: 'rules', label: '入店規範', icon: <RuleIcon /> },
+    { id: 'staff', label: '店員介紹', icon: <PeopleIcon /> },
+    { id: 'menu', label: '深夜價目', icon: <MenuBookIcon /> },
+  ];
+
   return (
     <div className="app">
-      <nav>
-        <button type="button" onClick={() => handleShowPage('home')}>
-          關於我們
-        </button>
-        <button type="button" onClick={() => handleShowPage('rules')}>
-          入店規範
-        </button>
-        <button type="button" onClick={() => handleShowPage('staff')}>
-          店員介紹
-        </button>
-        <button type="button" onClick={() => handleShowPage('menu')}>
-          深夜價目
-        </button>
-      </nav>
+      {isMobile ? (
+        <>
+          <AppBar position="static" sx={{ backgroundColor: '#0a0908' }}>
+            <Toolbar>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleDrawer(true)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <h1 style={{ margin: 0, fontSize: '1.2rem' }}>與咪子有約</h1>
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            anchor="left"
+            open={drawerOpen}
+            onClose={toggleDrawer(false)}
+          >
+            <List sx={{ width: 250, backgroundColor: '#0a0908', height: '100%' , color: '#c5a059' }}>
+              {navItems.map((item) => (
+                <ListItem button key={item.id} onClick={() => handleShowPage(item.id)}>
+                  <ListItemIcon sx={{ color: '#c5a059' }}>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.label} />
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+        </>
+      ) : (
+        <nav>
+          <button type="button" onClick={() => handleShowPage('home')}>
+            關於我們
+          </button>
+          <button type="button" onClick={() => handleShowPage('rules')}>
+            入店規範
+          </button>
+          <button type="button" onClick={() => handleShowPage('staff')}>
+            店員介紹
+          </button>
+          <button type="button" onClick={() => handleShowPage('menu')}>
+            深夜價目
+          </button>
+        </nav>
+      )}
 
       {page === 'home' && <HomePage />}
       {page === 'rules' && <RulesPage />}

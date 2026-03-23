@@ -75,5 +75,16 @@
       "url": ""
     },
     "songs": []
+  },
+  {
+    "name": "阿桂",
+    "file": "阿桂.png",
+    "desc": "樂手。每個人心中都住著一個小孩，而我的琴聲，就是通往童年的時光機。",
+    "special": "點歌:1首 / 30,000 Gil\n（點歌服務請自行私訊咪子或領班人員）",
+    "link": {
+      "text": "",
+      "url": ""
+    },
+    "songs": ["富士山下", "Lemon Tree檸檬樹", "My Heart Will Go On鐵達尼號主題曲", "當你", "家後", "千本櫻", "Every heart 犬夜叉", "Butterfly-合奏"]
   }
 ]
